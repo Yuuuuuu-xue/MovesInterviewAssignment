@@ -7,23 +7,13 @@ interface Props {
 
 const Data: React.FC<Props> = () => {
   
-  const { data, getData, latitude, longitude, setLongitude, setLatitude} = useFetchData("-94.04", "33.44");
-  
-  const handleLongitudeInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setLongitude(event.target.value);
-  }
-
-  const handleLatitudeInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setLatitude(event.target.value)
-  }
+  const { data, getData, input, handleInputChange} = useFetchData();
 
   return (
     <div>
       <h1>Data Page</h1>
-      <label>Latitude:</label>
-      <input type="text" value={latitude} onChange={handleLatitudeInput} />
-      <label>Longitude:</label>
-      <input type="text" value={longitude} onChange={handleLongitudeInput} />
+      <label>City:</label>
+      <input type="text" value={input} onChange={handleInputChange} />
       <button type="button" onClick={getData}>Get Data</button>
       {data &&
         <>
