@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "../../variables.scss";
 
 .footer {
   text-align: center;
@@ -13,4 +13,8 @@
   z-index: 2;
   border-top: 5px solid $black;
   color: $black;
+
+  .github:hover {
+    color: black;
+  }
 }
