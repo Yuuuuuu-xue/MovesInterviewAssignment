@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.search {
+  .input-label {
+    color: $white;
+  }
+  
+  .input-field {
+    color: $white;
+
+    .search-icon {
+      color: $white;
+      margin-right: 1vw;
+    }
+  
+  }
+}

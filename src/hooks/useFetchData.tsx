@@ -43,7 +43,7 @@ interface Data {
 export const useFetchData = () => {
   const [input, setInput] = useState("");
   const [data, setData] = useState<Data>();
-  const [fullAddress, setFullAddress] = useState("");
+  const [fullAddress, setFullAddress] = useState("Welcome");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(event.target.value);
