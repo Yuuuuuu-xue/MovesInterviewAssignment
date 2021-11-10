@@ -7,7 +7,7 @@ interface Props {
 
 const Data: React.FC<Props> = () => {
   
-  const { data, getData, input, handleInputChange} = useFetchData();
+  const { data, getData, input, handleInputChange, fullAddress} = useFetchData();
 
   return (
     <div>
@@ -15,6 +15,9 @@ const Data: React.FC<Props> = () => {
       <label>City:</label>
       <input type="text" value={input} onChange={handleInputChange} />
       <button type="button" onClick={getData}>Get Data</button>
+      {fullAddress &&
+        <h1>{fullAddress}</h1>
+      }
       {data &&
         <>
           <p>{data.lon}</p>

@@ -43,6 +43,7 @@ interface Data {
 export const useFetchData = () => {
   const [input, setInput] = useState("");
   const [data, setData] = useState<Data>();
+  const [fullAddress, setFullAddress] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(event.target.value);
@@ -55,21 +56,26 @@ export const useFetchData = () => {
       switch(res.data.status) {
         case "ZERO_RESULTS":
           alert("Invalid address");
+          setInput("");
           break;
         case "OK":
+          console.log(res);
           const longitude = res.data.results[0].geometry.location.lng;
           const latitude = res.data.results[0].geometry.location.lat;
+          setFullAddress(res.data.results[0].formatted_address);
           const weatherRes = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER_API}&units=metric`)
           setData(weatherRes.data);
           break;
         default:
           console.error("Unexpected status" + res.data.status);
+          setInput("");  
       }
     } catch (err) { 
       alert(err);
+      setInput("");
       console.error(err);
     }
   }
 
-  return { data, input, handleInputChange, getData};
+  return { data, input, handleInputChange, getData, fullAddress};
 };
