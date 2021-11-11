@@ -5,6 +5,7 @@ import SearchInput from "../../Components/SearchInput/SearchInput";
 import CurrentWeatherCard from "../../Components/Cards/CurrentWeatherCard/CurrentWeatherCard";
 import DailyWeatherCard from "../../Components/Cards/DailyWeatherCard/DailyWeatherCard";
 import {v4 as uuid} from "uuid"; 
+import { Box } from "@mui/material";
 
 interface Props {
 
@@ -22,13 +23,11 @@ const Home: FC<Props> = (): ReactElement => {
       {data &&
         <>     
           <CurrentWeatherCard fullAddress={fullAddress} {...data.current} />
-          {/* <p>{data.lon}</p>
-          // <p>{data.lat}</p>
-          // <p>{JSON.stringify(data.current)}</p> */}
-          {/* <p>{JSON.stringify(data.daily)}</p> */}
-          {data.daily.map(d => (
-            <DailyWeatherCard key={uuid()} {...d} />  
-          ))}
+          <Box sx={{display: 'flex', justifyContent: "center", flexWrap: "wrap"}}>
+            {data.daily.map(d => (
+              <DailyWeatherCard key={uuid()} {...d} />  
+            ))}          
+          </Box>
         </>
       }
     </div>

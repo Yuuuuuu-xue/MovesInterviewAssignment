@@ -31,7 +31,7 @@ const DailyWeatherCard: React.FC<DailyWeatherData> = ({
   }
 
   return(
-    <Card sx={{maxWidth: 200}} className="card daily">
+    <Card className="card daily">
       <CardHeader
         title={moment(new Date(dt * 1000)).format('dddd')}
       />
@@ -74,7 +74,7 @@ const DailyWeatherCard: React.FC<DailyWeatherData> = ({
           </p>
           <p>
             <span>Wind Speed: </span>
-            {wind_speed} metre/sec
+            {wind_speed} m/s
           </p> 
           <p>
             <span>Rain: </span>

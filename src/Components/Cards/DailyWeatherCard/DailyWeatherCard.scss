@@ -3,7 +3,8 @@
 .daily {
   color: $white !important;
   background: transparent !important;
-
+  margin: 10px 0 !important;
+  width: 80vw !important;
 
   .icon-wrapper {      
     &:hover,
@@ -14,5 +15,19 @@
     .icon {
       color: $white !important;
     }
+  }
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .daily {
+    width: 250px !important;
+    margin: 10px 5px !important;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+  .daily {
+    width: 10vw !important;
   }
 }
