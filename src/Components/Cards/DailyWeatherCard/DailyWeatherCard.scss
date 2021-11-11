@@ -1,0 +1,18 @@
+@import "../../../variables.scss";
+
+.daily {
+  color: $white !important;
+  background: transparent !important;
+
+
+  .icon-wrapper {      
+    &:hover,
+    &:active {
+      color: $red;
+    }
+
+    .icon {
+      color: $white !important;
+    }
+  }
+}

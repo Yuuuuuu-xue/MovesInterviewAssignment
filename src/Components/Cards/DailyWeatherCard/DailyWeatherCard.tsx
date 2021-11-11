@@ -4,6 +4,8 @@ import { Card, CardHeader, CardContent, CardActions, Collapse, IconButton, Typog
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { DailyWeatherData } from "../../../types/weatherInterface";
 import moment from "moment";
+import "../Card.scss";
+import "./DailyWeatherCard.scss";
 
 // Copy from material ui website
 const ExpandMore = styled((props: any) => {
@@ -29,7 +31,7 @@ const DailyWeatherCard: React.FC<DailyWeatherData> = ({
   }
 
   return(
-    <Card sx={{maxWidth: 345}}>
+    <Card sx={{maxWidth: 200}} className="card daily">
       <CardHeader
         title={moment(new Date(dt * 1000)).format('dddd')}
       />
@@ -50,8 +52,8 @@ const DailyWeatherCard: React.FC<DailyWeatherData> = ({
 
       {/* The click button */}
       <CardActions disableSpacing>
-        <ExpandMore expand={expand} onClick={handleClick} aria-expanded={expand} aria-label="show more data">
-          <ExpandMoreIcon />
+        <ExpandMore className="icon-wrapper" expand={expand} onClick={handleClick} aria-expanded={expand} aria-label="show more data">
+          <ExpandMoreIcon className="icon" />
         </ExpandMore>
       </CardActions>
 
