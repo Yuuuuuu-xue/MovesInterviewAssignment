@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 interface BaseWeatherData {
@@ -8,11 +8,13 @@ interface BaseWeatherData {
   pressure: number, // hPa
   wind_speed: number, // metre/sec
   weather: WeatherDescription[], 
-  dt: number // current time
+  dt: number // current time,
+  rain?: number, // mm
+  snow?: number, // mm
 }
 
 
-interface CurrentWeatherData extends BaseWeatherData {
+export interface CurrentWeatherData extends BaseWeatherData {
   temp: number
 }
 
@@ -65,6 +67,9 @@ export const useFetchData = () => {
           setFullAddress(res.data.results[0].formatted_address);
           const weatherRes = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_OPEN_WEATHER_API}&units=metric`)
           setData(weatherRes.data);
+          // save the data
+          window.localStorage.setItem("weatherAddress", JSON.stringify(res.data.results[0].formatted_address));
+          window.localStorage.setItem("weatherData", JSON.stringify(weatherRes.data));
           break;
         default:
           console.error("Unexpected status" + res.data.status);
@@ -76,6 +81,13 @@ export const useFetchData = () => {
       console.error(err);
     }
   }
+
+  useEffect(() => {
+    if (window.localStorage.getItem("weatherData") !== null && window.localStorage.getItem("weatherAddress") !== null) {
+      setFullAddress(JSON.parse(window.localStorage.getItem("weatherAddress") || ''));
+      setData(JSON.parse(window.localStorage.getItem("weatherData") || ''));
+    }
+  }, [])
 
   return { data, input, handleInputChange, getData, fullAddress};
 };
