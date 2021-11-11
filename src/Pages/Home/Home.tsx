@@ -3,6 +3,8 @@ import "./Home.scss";
 import { useFetchData } from "../../hooks/useFetchData"; 
 import SearchInput from "../../Components/SearchInput/SearchInput";
 import CurrentWeatherCard from "../../Components/Cards/CurrentWeatherCard/CurrentWeatherCard";
+import DailyWeatherCard from "../../Components/Cards/DailyWeatherCard/DailyWeatherCard";
+import {v4 as uuid} from "uuid"; 
 
 interface Props {
 
@@ -19,11 +21,14 @@ const Home: FC<Props> = (): ReactElement => {
 
       {data &&
         <>     
-         <CurrentWeatherCard fullAddress={fullAddress} {...data.current} />
+          <CurrentWeatherCard fullAddress={fullAddress} {...data.current} />
           {/* <p>{data.lon}</p>
-          <p>{data.lat}</p>
-          <p>{JSON.stringify(data.current)}</p> */}
-          <p>{JSON.stringify(data.daily)}</p>
+          // <p>{data.lat}</p>
+          // <p>{JSON.stringify(data.current)}</p> */}
+          {/* <p>{JSON.stringify(data.daily)}</p> */}
+          {data.daily.map(d => (
+            <DailyWeatherCard key={uuid()} {...d} />  
+          ))}
         </>
       }
     </div>
