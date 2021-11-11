@@ -8,7 +8,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 1vh 0;
+  padding: 5px 0;
   background: $white;
   z-index: 2;
   border-top: 5px solid $black;
@@ -17,4 +17,8 @@
   .github:hover {
     color: black;
   }
+}
+
+.footer-wrapper {
+  height: calc(50px);
 }
