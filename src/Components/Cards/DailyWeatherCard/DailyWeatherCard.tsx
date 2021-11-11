@@ -6,6 +6,7 @@ import { DailyWeatherData } from "../../../types/weatherInterface";
 import moment from "moment";
 import "../Card.scss";
 import "./DailyWeatherCard.scss";
+import WeatherDescription from "../WeatherDescription";
 
 // Copy from material ui website
 const ExpandMore = styled((props: any) => {
@@ -21,7 +22,7 @@ const ExpandMore = styled((props: any) => {
 
 
 const DailyWeatherCard: React.FC<DailyWeatherData> = ({
-  dt, temp, clouds, humidity, pressure, wind_speed, rain, snow, weather
+  dt, temp, weather, ...others
 }): React.ReactElement => {
 
   const [expand, setExpand] = useState(false);
@@ -69,30 +70,7 @@ const DailyWeatherCard: React.FC<DailyWeatherData> = ({
       {/* Expand output */}
       <Collapse in={expand} timeout="auto" unmountOnExit>
         <CardContent>
-          <p>
-            <span>Cloudiness: </span>
-            {clouds} %
-          </p>
-          <p>
-            <span>Humidity: </span>
-            {humidity} %
-          </p>
-          <p>
-            <span>Pressure: </span>
-            {pressure} hPa
-          </p>
-          <p>
-            <span>Wind Speed: </span>
-            {wind_speed} m/s
-          </p> 
-          <p>
-            <span>Rain: </span>
-            {rain ? rain : 0} mm
-          </p>
-          <p>
-            <span>Snow: </span>
-            {snow ? snow : 0} mm
-          </p>
+          <WeatherDescription {...others} />
         </CardContent>
       </Collapse>
     </Card>

@@ -3,6 +3,7 @@ import {CurrentWeatherData} from "../../../types/weatherInterface";
 import moment from "moment";
 import "../Card.scss";
 import "./CurrentWeatherCard.scss";
+import WeatherDescription from "../WeatherDescription";
 
 
 interface Props extends CurrentWeatherData {
@@ -11,7 +12,7 @@ interface Props extends CurrentWeatherData {
 
 
 const CurrentWeatherCard: React.FC<Props> = ({
-  fullAddress, clouds, humidity, pressure, wind_speed, weather, dt, rain, snow, temp
+  fullAddress, weather, dt, temp, ...others
 }): React.ReactElement => {
   return (
     <div className="card current">
@@ -24,30 +25,7 @@ const CurrentWeatherCard: React.FC<Props> = ({
           <h5 className="temperature">{temp} &deg;C</h5>
         </div>
         <div className="right">
-          <p>
-            <span>Cloudiness: </span>
-            {clouds} %
-          </p>
-          <p>
-            <span>Humidity: </span>
-            {humidity} %
-          </p>
-          <p>
-            <span>Pressure: </span>
-            {pressure} hPa
-          </p>
-          <p>
-            <span>Wind Speed: </span>
-            {wind_speed} metre/sec
-          </p> 
-          <p>
-            <span>Rain: </span>
-            {rain ? rain : 0} mm
-          </p>
-          <p>
-            <span>Snow: </span>
-            {snow ? snow : 0} mm
-          </p>
+          <WeatherDescription {...others} />
         </div>
       </div>
     </div>

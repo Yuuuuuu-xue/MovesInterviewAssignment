@@ -1,12 +1,15 @@
-interface BaseWeatherData {
+export interface BaseWeatherDescription {
   clouds: number, // Cloudiness %
   humidity: number, // %
   pressure: number, // hPa
   wind_speed: number, // metre/sec
-  weather: WeatherDescription[], 
-  dt: number // current time,
   rain?: number, // mm
   snow?: number, // mm
+}
+
+interface BaseWeatherData extends BaseWeatherDescription {
+  weather: WeatherDescription[], 
+  dt: number // current time,
 }
 
 
