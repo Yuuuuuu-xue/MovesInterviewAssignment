@@ -21,7 +21,7 @@ const ExpandMore = styled((props: any) => {
 
 
 const DailyWeatherCard: React.FC<DailyWeatherData> = ({
-  dt, temp, clouds, humidity, pressure, wind_speed, rain, snow
+  dt, temp, clouds, humidity, pressure, wind_speed, rain, snow, weather
 }): React.ReactElement => {
 
   const [expand, setExpand] = useState(false);
@@ -37,8 +37,17 @@ const DailyWeatherCard: React.FC<DailyWeatherData> = ({
       />
       <CardContent>
         <Typography variant="h6">
+          {weather[0].main}
+        </Typography>
+
+        <Typography paragraph>
+          {weather[0].description}
+        </Typography>
+
+        <Typography variant="h6">
           Temperature:
         </Typography>
+
         <Typography paragraph>
           Day: {temp.day} &deg;C
           <br />
@@ -60,7 +69,7 @@ const DailyWeatherCard: React.FC<DailyWeatherData> = ({
       {/* Expand output */}
       <Collapse in={expand} timeout="auto" unmountOnExit>
         <CardContent>
-        <p>
+          <p>
             <span>Cloudiness: </span>
             {clouds} %
           </p>
