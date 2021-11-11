@@ -1,5 +1,5 @@
 import React from "react";
-import {CurrentWeatherData} from "../../../hooks/useFetchData";
+import {CurrentWeatherData} from "../../../types/weatherInterface";
 import moment from "moment";
 import "../Card.scss";
 import "./CurrentWeatherCard.scss";
