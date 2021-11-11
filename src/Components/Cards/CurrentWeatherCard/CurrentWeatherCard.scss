@@ -1,0 +1,68 @@
+@import "../../../variables.scss";
+
+.current {
+
+  margin-bottom: 20px;
+
+  .address {
+    font-size: calc(1.2em + .4vw);
+  }
+
+  .time {
+    margin-top: 5px;
+    text-align: right;
+    font-size: calc(1.2em + .4vw);
+  }
+
+  h5 {
+    text-align: center;
+    
+    &.weather {
+      font-size: calc(2em + 1vw);
+      font-weight: bold;
+    }
+
+    &.weatherDescription {
+      font-size: calc(1.2em + .4vw);
+    }
+
+    &.temperature {
+      font-size: calc(4em + 1vw);
+
+      text-decoration: underline 3px solid $white;
+    }
+  }
+
+  p {
+    margin: 5px 0;
+  }
+}
+
+
+@media screen and (min-width: $breakpoint-labtop) {
+  .current {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+  
+      .right { 
+        text-align: center;
+
+        h5 {
+          margin: auto 0;
+          vertical-align: middle;
+        }
+
+        p {
+          margin: 10px 0;
+          font-size: calc(1.1em + .3vw);
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+
+}

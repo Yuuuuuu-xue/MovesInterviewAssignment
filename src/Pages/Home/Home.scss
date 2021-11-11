@@ -8,11 +8,10 @@
     font-size: 2.5em;
   }
   
-  .address {
-    margin-left: 5px;
-    margin-top: 10px;
+}
+
+@media screen and (min-width: $breakpoint-labtop) {
+  .home {
+    margin: 20px;
   }
-
-
-
 }
