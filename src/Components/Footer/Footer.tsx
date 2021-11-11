@@ -10,7 +10,7 @@ const Footer: React.FC<Props> = (): React.ReactElement => {
   return (
     <footer className="footer">
       Yu Xue ©2021 <span>
-        <a target="_blank" href="https://github.com/Yuuuuuu-xue">
+        <a target="_blank" rel="noreferrer" href="https://github.com/Yuuuuuu-xue">
           <IconButton className="github">
             <GitHubIcon />
           </IconButton>
