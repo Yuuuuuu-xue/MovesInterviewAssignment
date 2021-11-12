@@ -8,11 +8,16 @@
 
   h5 {
     font-size: calc(5vw + 5vh);
+    text-align: center;
     color: transparent;    
     -webkit-text-stroke-width: 1px;
 
     &.white {
       -webkit-text-stroke-color: $white;
+    }
+
+    &.red {
+      -webkit-text-stroke-color: $red;
     }
   }
 

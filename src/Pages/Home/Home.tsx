@@ -14,14 +14,20 @@ interface Props {
 
 const Home: FC<Props> = (): ReactElement => {
 
-  const { fullAddress, input, handleInputChange, getData, data } = useFetchData(); 
+  const { fullAddress, input, handleInputChange, getData, data, loading, error} = useFetchData(); 
   
   return (
     <div className="home">
       <h1 className="title">Home Page</h1>
       <SearchInput input={input} handleInputChange={handleInputChange} handleButtonClick={getData} />
 
-      {data ?
+      {loading && 
+        <StateCard info="Loading ..." color="white" />
+      }
+      {error &&
+        <StateCard info={error} color="red" />
+      }
+      {data &&
         <>     
           <CurrentWeatherCard fullAddress={fullAddress} {...data.current} />
           <Box sx={{display: 'flex', justifyContent: "center", flexWrap: "wrap"}}>
@@ -30,10 +36,9 @@ const Home: FC<Props> = (): ReactElement => {
             ))}          
           </Box>
         </>
-        :
-        <>
-          <StateCard info="No Data" color="white" />
-        </>
+      }
+      {!loading && !error && !data && 
+        <StateCard info="No Data" color="white" />
       }
     </div>
     
