@@ -22,3 +22,11 @@ Deployed via Vercel, https://moves-interview-assignment.vercel.app/
     ```
     npm start
     ```
+## Features
+- [X] Reusable components
+- [X] TypeScript
+- [X] Error states 
+
+## API Reference
+- OpenWeather One Call API, [link](https://openweathermap.org/api/one-call-api)
+- Google Map Geocoding API, [link](https://developers.google.com/maps/documentation/geocoding/overview)
